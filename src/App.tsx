@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import TdPages from "./pages/TDPages";
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import AboutPages from "./pages/AboutPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+const App: React.FC = () => {
+
+    return (
+        <BrowserRouter>
+            <Navbar />
+            <div className='container'>
+                <Switch>
+                    <Route component={AboutPages} path={'/about'}/>
+                    <Route component={TdPages} path={'/'} exact/>
+                </Switch>
+            </div>
+        </BrowserRouter>
+    );
+};
 
 export default App;
